@@ -61,6 +61,11 @@ $route['new_plan']='plan/new_plan';
 $route['plan_list']='plan/plan_list';
 $route['edit_plan/(:any)']='plan/edit_plan/$1';
 
+/* Invoice Navigation*/
+$route['new_invoice']='invoice/new_invoice';
+$route['invoice_list']='invoice/invoice_list';
+$route['edit_invoice/(:any)']='invoice/edit_invoice/$1';
+
 /* Other Navigation */
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
