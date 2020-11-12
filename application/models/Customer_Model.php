@@ -20,6 +20,7 @@ class Customer_Model extends CI_Model{
     function getList(){
         $this->db->select('*');
         $this->db->from('customer_master');
+        $this->db->order_by('user_name');
         $query=$this->db->get();
         return $query->result_array();
     }

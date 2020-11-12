@@ -15,7 +15,7 @@
   <tbody>
       <?php foreach ($posts as $post):?>
       <tr>
-        <th scope="row"><?php echo $post['cust_id'];?></th>
+        <td scope="row"></td>
         <td><?php echo $post['user_name'];?></td>
         <td><?php echo $post['name'];?></td>
         <td><?php echo $post['mobile_no'];?></td>

@@ -42,4 +42,13 @@ input,.form-control{
     z-index: 10;*/
     
 }
-
+body
+{
+    counter-reset: Count-Value;     
+}
+tr td:first-child:before
+{
+  counter-increment: Count-Value;   
+  content: counter(Count-Value);
+  font-weight: bold;
+}
