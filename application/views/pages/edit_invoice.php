@@ -1,6 +1,7 @@
-<h1 class="display-7">New Invoice</h1>
+<h1 class="display-7">Edit Invoice</h1>
 <?php echo validation_errors('<div class="alert alert-danger">','</div>'); ?>
-<?php echo form_open('invoice/insert'); ?>
+<?php echo form_open('invoice/update'); ?>
+<input type="hidden" name="inv_id" value="<?php echo $invoice->inv_id;?>"/>
 <div class="row">
     <div class="col">
         <label for="cust_name">Customer Name</label>
@@ -9,7 +10,7 @@
                 <option value="">--- Select Customer ---</option>
                 <?php foreach ($customers as $customer):
                     $select="";
-                    if(set_value('cust_id')==$customer['cust_id']){
+                    if(set_value('cust_id')==$customer['cust_id'] || $invoice->cust_id==$customer['cust_id']){
                         $select="selected";
                     }
                     ?>
@@ -21,7 +22,7 @@
     <div class="col">
         <label for="inv_date">Invoice Date</label>
         <div class="form-group">
-            <input class="form-control" type="date" name="inv_date" value="<?php echo set_value('inv_date');?>" />
+            <input class="form-control" type="date" name="inv_date" value="<?php echo set_value('inv_date',$invoice->inv_date);?>" />
         </div>
     </div>
 </div>
@@ -35,7 +36,7 @@
                     foreach($plans as $plan):
                         
                     $select="";
-                    if(set_value('plan_id')==$plan['plan_id']){
+                    if(set_value('plan_id')==$plan['plan_id'] || $invoice->plan_id==$plan['plan_id']){
                     $select="selected";
                     }
                 ?>
@@ -48,7 +49,7 @@
     <div class="col">
         <label for="exp_date">Expiry Date</label>
         <div class="form-group">
-            <input class="form-control" type="date" name="exp_date" value="<?php echo set_value('exp_date');?>" />
+            <input class="form-control" type="date" name="exp_date" value="<?php echo set_value('exp_date',$invoice->exp_date);?>" />
         </div>
     </div>
 </div>
@@ -56,13 +57,13 @@
     <div class="col">
         <label for="price">Plan Price</label>
         <div class="form-group">        
-            <input type="text" id="price" name="price" class="form-control" value="<?php echo set_value('price'); ?>"/>
+            <input type="text" id="price" name="price" class="form-control" value="<?php echo set_value('price',$invoice->price); ?>"/>
         </div>
     </div>
     <div class="col">
         <label for="payment">Payment</label>
         <div class="form-group">
-            <input type="text" id="payment" name="payment" class="form-control" value="<?php echo set_value('payment'); ?>"/>
+            <input type="text" id="payment" name="payment" class="form-control" value="<?php echo set_value('payment',$invoice->payment); ?>"/>
         </div>
     </div>
 </div>

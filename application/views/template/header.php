@@ -42,7 +42,6 @@
                   <div class="dropdown-menu" aria-labelledby="nvarbarDropdownMenuLink">
                     <a class="dropdown-item" href="<?php echo base_url(); ?>new_invoice">New Invoice</a>
                     <a class="dropdown-item" href="<?php echo base_url(); ?>invoice_list">Invoice List</a>
-                    <a class="dropdown-item" href="#">Payment</a>
                   </div>
                 </li>
           	

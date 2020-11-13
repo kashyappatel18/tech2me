@@ -61,4 +61,8 @@ class Plan extends CI_Controller {
             redirect('/plan_list','refresh');
         }
     }
+    function getRate(){
+        $plan_id=$this->input->post('plan_id');
+        echo $this->Plan_Model->getRate($plan_id);
+    }
 }

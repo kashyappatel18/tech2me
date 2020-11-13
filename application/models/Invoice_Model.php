@@ -24,4 +24,8 @@ class Invoice_Model extends CI_Model{
         
         return $query->row();
     }
+    function update($arr,$inv_id){
+        $this->db->where('inv_id',$inv_id);
+        $this->db->update('invoice_master',$arr);
+    }
 }

@@ -25,4 +25,19 @@ class Plan_Model extends CI_Model{
         
         return $query->row();
     }
+    function getRate($plan_id){
+            $this->db->select('plan_price');
+            $this->db->from('plan_master');
+            $this->db->where('plan_id',$plan_id);
+
+            $this->db->limit(1);
+            
+            $query=$this->db->get();
+            
+            //$unit_price=$query->row()->unit_price;
+            //return $query->num_rows();
+            return $query->row()->plan_price;
+            
+            
+        }
 }

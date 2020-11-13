@@ -13,6 +13,7 @@ class Invoice extends CI_Controller {
     {
         $data['customers']= $this->Customer_Model->getList();
         $data['plans']= $this->Plan_Model->getList();
+        $data['js']="invoice";
         
         $this->load->view('template/header');
         $this->load->view('pages/new_invoice',$data);
@@ -50,9 +51,36 @@ class Invoice extends CI_Controller {
     }
     function edit_invoice($id){
         $data['invoice']= $this->Invoice_Model->getInvoiceDetails($id);
+        $data['customers']= $this->Customer_Model->getList();
+        $data['plans']= $this->Plan_Model->getList();
+        $data['js']="invoice";
 
         $this->load->view('template/header');
         $this->load->view('pages/edit_invoice',$data);
         $this->load->view('template/footer');
+    }
+    public function update() {
+        $this->form_validation->set_rules('cust_id','User Name','trim|required');
+        $this->form_validation->set_rules('inv_date','Invoice Date','trim|required');
+        $this->form_validation->set_rules('plan_id','Plan','trim|required');
+        $this->form_validation->set_rules('exp_date','Plan Expiry Date','trim|required');
+        $this->form_validation->set_rules('price','Price','trim|required|numeric');
+        $this->form_validation->set_rules('payment','Payment','trim|numeric');
+
+        if($this->form_validation->run()==FALSE){
+            $this->edit_invoice($this->input->post('inv_id'));
+        }
+        else {
+            $arr=array(
+                'cust_id'=>$this->input->post('cust_id'),
+                'inv_date'=>$this->input->post('inv_date'),
+                'plan_id'=>$this->input->post('plan_id'),
+                'exp_date'=>$this->input->post('exp_date'),
+                'price'=>$this->input->post('price'),
+                'payment'=>$this->input->post('payment')
+                );
+            $con_id=$this->Invoice_Model->update($arr,$this->input->post('inv_id'));
+            redirect('/invoice_list','refresh');
+        }
     }
 }
