@@ -28,6 +28,8 @@ class Welcome extends CI_Controller {
         $data['num_of_cust']= $this->Customer_Model->getTotalNoOfCust();
         $data['free_users']=$this->Invoice_Model->getFreeUsers();
         $data['recovery_list']= $this->Invoice_Model->getRecoveryList();
+        $data['expiry_list']= $this->Invoice_Model->getExpiryList();
+        $data['total_recovery']= $this->Invoice_Model->getTotalRecoveryAmount();
         $this->load->view('template/header');
         $this->load->view('welcome_message',$data);
         $this->load->view('template/footer');
