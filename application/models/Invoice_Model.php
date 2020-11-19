@@ -28,4 +28,24 @@ class Invoice_Model extends CI_Model{
         $this->db->where('inv_id',$inv_id);
         $this->db->update('invoice_master',$arr);
     }
+    function getFreeUsers(){
+        $this->db->distinct();
+        $this->db->select('cust_id');
+        $this->db->from('invoice_master');
+        $this->db->where('price','0');
+        $this->db->order_by('inv_date','DESC');
+        $query=$this->db->get();
+        
+        return $query->num_rows();
+    }
+    function getRecoveryList(){
+        $this->db->select('cust.user_name,cust.mobile_no,inv.inv_id,( price - payment ) as dif');
+        $this->db->from('invoice_master as inv');
+        $this->db->join('customer_master as cust','cust.cust_id=inv.cust_id');
+        $this->db->join('plan_master as plan','plan.plan_id=inv.plan_id');
+        $this->db->having('dif >','0');
+        $this->db->order_by('inv_date','DESC');
+        $query=$this->db->get();
+        return $query->result_array();
+    }
 }

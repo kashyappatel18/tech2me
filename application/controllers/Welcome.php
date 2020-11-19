@@ -20,12 +20,14 @@ class Welcome extends CI_Controller {
 	 */
     function __construct() {
         parent::__construct();
-        $this->load->model('Customer_Model');
+        $this->load->model(array('Customer_Model','Invoice_Model'));
     }
 
     public function index()
     {
         $data['num_of_cust']= $this->Customer_Model->getTotalNoOfCust();
+        $data['free_users']=$this->Invoice_Model->getFreeUsers();
+        $data['recovery_list']= $this->Invoice_Model->getRecoveryList();
         $this->load->view('template/header');
         $this->load->view('welcome_message',$data);
         $this->load->view('template/footer');
