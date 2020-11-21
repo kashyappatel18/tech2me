@@ -21,7 +21,15 @@
     <div class="col-2">
         <div class="card widget-flat" style="padding:10px;">
             <div class="card-body">
-                <p>Total Recovery</p>
+                <p>Recovery</p>
+                <h4 class="display-7">₹ <?php echo number_format($total_recovery->tot_recovery); ?></h4>
+            </div>
+        </div>
+    </div>
+    <div class="col-2">
+        <div class="card widget-flat" style="padding:10px;">
+            <div class="card-body">
+                <p>Credit</p>
                 <h4 class="display-7">₹ <?php echo number_format($total_recovery->tot_recovery); ?></h4>
             </div>
         </div>
