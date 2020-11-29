@@ -6,7 +6,7 @@ class Invoice extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->helper('form');
-        $this->load->library('form_validation');
+        $this->load->library(array('form_validation','m_pdf'));
         $this->load->model(array('Customer_Model','Plan_Model','Invoice_Model'));
     }
     public function new_invoice()
@@ -82,5 +82,24 @@ class Invoice extends CI_Controller {
             $con_id=$this->Invoice_Model->update($arr,$this->input->post('inv_id'));
             redirect('/invoice_list','refresh');
         }
+    }
+    public function print_invoice($id){
+        $data['invoice']= $this->Invoice_Model->getInvoiceDetails($id);
+        $data['customers']= $this->Customer_Model->getList();
+        $data['plans']= $this->Plan_Model->getList();
+        
+
+        $html=$this->load->view('template/pdf_header',null,true);
+        $html.=$this->load->view('pages/print_invoice',$data,true);
+        //$html.=$this->load->view('template/pdf_footer',null,true);
+        
+        
+        echo $html;
+        $filename='invoice.pdf';
+        
+        /*$pdf=$this->m_pdf->load();
+        $pdf->WriteHTML("demo contenet",0);
+        $pdf->Output($filename,'I');*/
+
     }
 }

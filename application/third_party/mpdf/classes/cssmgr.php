@@ -1062,12 +1062,13 @@ function _mergeBorders(&$b, &$a) {	// Merges $a['BORDER-TOP-STYLE'] to $b['BORDE
 function MergeCSS($inherit,$tag,$attr) {
 	$p = array();
 	$zp = array(); 
+        $attr=array();
 
 	$classes = array();
 	if (isset($attr['CLASS'])) {
 		$classes = preg_split('/\s+/',$attr['CLASS']);
 	}
-	if (!isset($attr['ID'])) { $attr['ID']=''; }
+	if (!isset($attr['ID'])) { $attr['ID']=""; }
 	//===============================================
 /*-- TABLES --*/
 	// Set Inherited properties

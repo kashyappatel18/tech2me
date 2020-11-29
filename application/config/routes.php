@@ -65,6 +65,7 @@ $route['edit_plan/(:any)']='plan/edit_plan/$1';
 $route['new_invoice']='invoice/new_invoice';
 $route['invoice_list']='invoice/invoice_list';
 $route['edit_invoice/(:any)']='invoice/edit_invoice/$1';
+$route['print_invoice/(:any)']='invoice/print_invoice/$1';
 
 /* Other Navigation */
 $route['404_override'] = '';

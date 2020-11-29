@@ -23,7 +23,7 @@
         <td><?php echo $post['exp_date'];?></td>
         <td><?php echo $post['price'];?></td>
         <td><?php echo $post['payment'];?></td>
-        <td><a href="<?php echo base_url();?>edit_invoice/<?php echo $post['inv_id'];?>">Edit</a></td>
+        <td><a href="<?php echo base_url();?>print_invoice/<?php echo $post['inv_id'];?>">Print</a> | <a href="<?php echo base_url();?>edit_invoice/<?php echo $post['inv_id'];?>">Edit</a></td>
       </tr>
       <?php endforeach; ?>
     
