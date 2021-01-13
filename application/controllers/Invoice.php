@@ -102,4 +102,24 @@ class Invoice extends CI_Controller {
         $pdf->Output($filename,'I');*/
 
     }
+    public function createRecoveryExcel() {
+        $data=$this->Invoice_Model->getRecoveryList();
+        $filename='recovery-'.date('d_m_Y').'.xls';
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+        header("Content-Type: application/vnd.ms-excel");
+        echo '<table border="1">
+            <tr>
+              <th>Username</th>
+              <th>Mobile No</th> 
+              <th>Amount</th>
+            </tr>';
+            foreach($data as $row){
+                echo '<tr>';
+                echo '<td>'.$row['user_name'].'</td>';
+                echo '<td>'.$row['mobile_no'].'</td>';
+                echo '<td>'.$row['dif'].'</td>';
+                echo '</tr>';
+            }
+        echo '</table>';
+    }
 }

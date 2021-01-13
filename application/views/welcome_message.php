@@ -2,7 +2,7 @@
     <div class="col"><h4 class="display-7">Dashboard</h4></div>
 </div>
 <div class="row">
-    <div class="col-2">
+    <div class="col">
         <div class="card widget-flat" style="padding:10px;">
             <div class="card-body">
                 <p>Customers</p>
@@ -10,7 +10,7 @@
             </div>
         </div>
     </div>
-    <div class="col-2">
+    <div class="col">
         <div class="card widget-flat" style="padding:10px;">
             <div class="card-body">
                 <p>Free Users</p>
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="col-2">
+    <div class="col">
         <div class="card widget-flat" style="padding:10px;">
             <div class="card-body">
                 <p>Recovery</p>
@@ -26,11 +26,11 @@
             </div>
         </div>
     </div>
-    <div class="col-2">
+    <div class="col">
         <div class="card widget-flat" style="padding:10px;">
             <div class="card-body">
                 <p>Credit</p>
-                <h4 class="display-7">₹ <?php echo number_format($total_recovery->tot_recovery); ?></h4>
+                <h4 class="display-7">₹ <?php echo number_format($total_credit->tot_credit); ?></h4>
             </div>
         </div>
     </div>
@@ -39,15 +39,15 @@
     &nbsp;
 </div>
 <div class="row">
-    <div class="col-5">
+    <div class="col">
         <div class="card widget-flat" style="padding:10px;">
             <div class="card-body">
                 <div class="row">
                 <p class="col text-muted">RECOVERY LIST</p>
-                <div class="col text-right"><small>EXPORT TO:</small> <a href>PDF</a> | <a href>Excel</a></div>
+                <div class="col text-right"><small>EXPORT TO:</small> <a href>PDF</a> | <a href="<?php echo base_url(); ?>rec_list_excel">Excel</a></div>
                 </div>
                 <div class="row scrollbar scrollbar-primary">
-                    <div class="col-12">
+                    <div class="col">
                 <table class="table table-hover">
                     <tbody>
                     <?php foreach ($recovery_list as $recovery):?>
@@ -66,7 +66,7 @@
             </div>
         </div>
     </div>
-    <div class="col-5">
+    <div class="col">
         <div class="card widget-flat" style="padding:10px;">
             <div class="card-body">
                 <div class="row">

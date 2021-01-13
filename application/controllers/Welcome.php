@@ -30,6 +30,7 @@ class Welcome extends CI_Controller {
         $data['recovery_list']= $this->Invoice_Model->getRecoveryList();
         $data['expiry_list']= $this->Invoice_Model->getExpiryList();
         $data['total_recovery']= $this->Invoice_Model->getTotalRecoveryAmount();
+        $data['total_credit']= $this->Invoice_Model->getTotalCreditAmount();
         $this->load->view('template/header');
         $this->load->view('welcome_message',$data);
         $this->load->view('template/footer');

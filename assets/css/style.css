@@ -53,8 +53,7 @@ tr td:first-child:before
   font-weight: bold;
 }
 .scrollbar{
-margin-left: 10px;
-float: left;
+margin: 10px;
 height: 300px;
 background: #fff;
 overflow-y: scroll;

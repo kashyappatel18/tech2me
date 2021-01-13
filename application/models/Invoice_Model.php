@@ -54,12 +54,22 @@ class Invoice_Model extends CI_Model{
         $this->db->from('invoice_master as inv');
         $this->db->join('customer_master as cust','cust.cust_id=inv.cust_id');
         $this->db->join('plan_master as plan','plan.plan_id=inv.plan_id');
+        $this->db->where('exp_date <', date('Y-m-d'));
         $this->db->order_by('exp_date','ASC');
         $query=$this->db->get();
         return $query->result_array();
     }
     function getTotalRecoveryAmount(){
         $this->db->select('sum(payment) as tot_recovery');
+        $this->db->from('invoice_master');
+        $this->db->limit(1);
+        
+        $query= $this->db->get();
+        
+        return $query->row();
+    }
+    function getTotalCreditAmount(){
+        $this->db->select('sum(price)-sum(payment) as tot_credit');
         $this->db->from('invoice_master');
         $this->db->limit(1);
         

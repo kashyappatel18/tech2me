@@ -66,6 +66,7 @@ $route['new_invoice']='invoice/new_invoice';
 $route['invoice_list']='invoice/invoice_list';
 $route['edit_invoice/(:any)']='invoice/edit_invoice/$1';
 $route['print_invoice/(:any)']='invoice/print_invoice/$1';
+$route['rec_list_excel']='invoice/createRecoveryExcel';
 
 /* Other Navigation */
 $route['404_override'] = '';
